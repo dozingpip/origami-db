@@ -1,0 +1,24 @@
+{
+  "name": "origami-db",
+  "version": "0.0.1",
+  "description": "database of origami crease patterns and their folded obj equivalent",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freestraws/origami-db.git"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/freestraws/origami-db/issues"
+  },
+  "homepage": "https://github.com/freestraws/origami-db#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fold": "^0.10.4",
+    "rabbit-ear": "^0.1.91"
+  }
+}

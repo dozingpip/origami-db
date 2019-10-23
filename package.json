@@ -18,7 +18,10 @@
   "homepage": "https://github.com/freestraws/origami-db#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "fold": "^0.10.4",
+    "nunjucks": "^3.2.0",
     "rabbit-ear": "^0.1.91"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.1"
   }
 }

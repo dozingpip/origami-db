@@ -6,16 +6,16 @@ const router = express.Router();
 module.exports = router;
 
 var db_finish = new Promise(function(resolve, reject){
-    let types = ["svg", "fold"]
     let db_origami = {}
-    types.forEach(type =>{
-        let files = fs.readdirSync("db-origami/" + type);
+    let model_names = fs.readdirSync("db-origami/db/");
+    model_names.forEach(name =>{
         let flist = []
+        let files = fs.readdirSync("db-origami/db/" + name);
         files.forEach(file => {
-            let n = path.basename(file, "." + type);
-            flist.push({ link: "/db/" + type + "/" + n, name: n });
+            let type = path.extname(file).split('.').pop();
+            flist.push({ link: "/db/" + name + "/" + type, name: type });
         });
-        db_origami[type] = {link: "/db/" + type, name: type, files: flist};
+        db_origami[name] = {link: "/db/" + name, name: name, files: flist};
     });
     resolve(db_origami);
 });
@@ -27,17 +27,17 @@ router.get("/", function(req, res){
     });
 });
 
-router.get("/:type", function(req, res){
-    var type = req.params.type;
+router.get("/:id", function(req, res){
+    let id = req.params.id;
     db_finish.then((db) => {
-        res.render("index.njk", {dropdown_items: db[type]['files']});
+        res.render("index.njk", {dropdown_items: db[id]['files']});
     });
 });
 
-router.get("/:type/:id", function(req, res){
-    var id = req.params.id;
-    var type = req.params.type;
-    fs.readFile("db-origami/" + type + "/" + id + "." + type, 'utf8', function(err, data){
+router.get("/:id/:type", function(req, res){
+    let id = req.params.id;
+    let type = req.params.type;
+    fs.readFile("db-origami/db/" + id + "/" + id + "." + type, 'utf8', function(err, data){
         res.render("index.njk", {script: "/" + type + ".js", data: "`" + data + "`", type: type});
     });
 });

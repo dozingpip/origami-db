@@ -1,24 +1,18 @@
 const rabbit = require('rabbit-ear');
 const express = require('express');
 const path = require('path');
-const fs = require('fs');
 const nunjucks = require('nunjucks');
 
 var app = express();
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')));
 nunjucks.configure('views', {
     autoescape: true,
     express: app
 });
 app.use('/scripts', express.static(__dirname + '/node_modules/rabbit-ear/'))
 
-fs.readFile("crane.svg", 'utf8', function(err, data){
-    d = data;
-});
-
-app.get("/", function(req, res){
-    res.render("index.njk", {script: "highlight.js", data: "`" + d + "`"});
-});
+const db = require('./db');
+app.use('/db', db);
 
 // add the router
 var router = express.Router();

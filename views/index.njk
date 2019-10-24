@@ -1,5 +1,13 @@
-<title> Origami</title>
-<script>data = {{data | safe}}</script>
-<script src="./scripts/rabbit-ear.min.js"></script>
-<script src={{script}}></script>
-<div id="svg"></div>
+<title>Origami</title>
+{% if data %}
+    <script>data = {{data | safe}}</script>
+{% endif %}
+<script src="/scripts/rabbit-ear.min.js"></script>
+{% if script %}
+    <script src={{script}}></script>
+{% endif %}
+{% if dropdown_items %}
+    <link rel="stylesheet" href="/dropdown.css">
+    <script src="/dropdown.js"></script>
+    {% include "dropdown.njk" %}
+{% endif %}

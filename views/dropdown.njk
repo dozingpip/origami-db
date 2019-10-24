@@ -1,0 +1,8 @@
+<div class="dropdown">
+    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+    <div id="myDropdown" class="dropdown-content">
+        {% for d in dropdown_items %}
+            <a href={{d.link}}>{{ d.name }}</a>
+        {% endfor %}
+    </div>
+</div>

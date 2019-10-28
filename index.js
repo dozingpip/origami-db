@@ -13,6 +13,7 @@ app.use('/scripts', express.static(__dirname + '/node_modules/rabbit-ear/'))
 
 const db = require('./db');
 app.use('/db', db);
+app.use('/edit', require('./edit'))
 
 // add the router
 var router = express.Router();

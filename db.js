@@ -5,7 +5,7 @@ const express = require('express');
 const router = express.Router();
 module.exports = router;
 
-var db_finish = new Promise(function(resolve, reject){
+let db_finish = new Promise(function(resolve, reject){
     let db_origami = {}
     let model_names = fs.readdirSync("db-origami/db/");
     model_names.forEach(name =>{
@@ -23,14 +23,14 @@ module.exports.db_origami = db_finish;
 
 router.get("/", function(req, res){
     db_finish.then((db) => {
-        res.render("index.njk", {dropdown_items: Object.values(db)});
+        res.render("viewer.njk", {dropdown_items: Object.values(db)});
     });
 });
 
 router.get("/:id", function(req, res){
     let id = req.params.id;
     db_finish.then((db) => {
-        res.render("index.njk", {dropdown_items: db[id]['files']});
+        res.render("viewer.njk", {dropdown_items: db[id]['files']});
     });
 });
 
@@ -38,6 +38,6 @@ router.get("/:id/:type", function(req, res){
     let id = req.params.id;
     let type = req.params.type;
     fs.readFile("db-origami/db/" + id + "/" + id + "." + type, 'utf8', function(err, data){
-        res.render("index.njk", {script: "/" + type + ".js", data: "`" + data + "`", type: type});
+        res.render("viewer.njk", {script: "/" + type + ".js", data: "`" + data + "`", type: type});
     });
 });

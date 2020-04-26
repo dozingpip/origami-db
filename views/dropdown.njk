@@ -2,7 +2,7 @@
     <button onclick="myFunction()" class="dropbtn">Dropdown</button>
     <div id="myDropdown" class="dropdown-content">
         {% for d in dropdown_items %}
-            <a href={{d.link}}>{{ d.name }}</a>
+            <a href={{ plink + d}}>{{ d }}</a>
         {% endfor %}
     </div>
 </div>

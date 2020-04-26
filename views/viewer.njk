@@ -2,7 +2,18 @@
 {% if data %}
     <script>data = {{data | safe}}</script>
 {% endif %}
-<script src="/scripts/rabbit-ear.min.js"></script>
+<link rel="stylesheet" type="text/css" href="button.css">
+<link rel="stylesheet" type="text/css" href="slider.css">
+<link rel="stylesheet" type="text/css" href="main.css">
+<link rel="stylesheet" type="text/css" href="origami.css">
+<script src="https://threejs.org/build/three.min.js"></script>
+<script src="/scripts/origami-simulator/tests/js/trackballcontrols.js"></script>
+<script src="https://edemaine.github.io/fold/dist/fold.js"></script>
+<script src="https://unpkg.com/earcut@2.1.5/dist/earcut.min.js"></script>
+<script src="https://threejs.org/examples/js/loaders/SVGLoader.js"></script>
+<script src="/scripts/origami-simulator/origami-simulator.js"></script>
+<div></div>
+<script src="/scripts/rabbit-ear/rabbit-ear.js"></script>
 {% if script %}
     <script src={{script}}></script>
 {% endif %}

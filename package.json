@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/freestraws/origami-db#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "nodegit": "^0.26.2",
     "nunjucks": "^3.2.0",
     "rabbit-ear": "^0.1.91"
